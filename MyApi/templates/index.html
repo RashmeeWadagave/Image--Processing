@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My PJ</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}">
+</head>
+<body>
+
+    <div class="form-body">
+        <div class="row">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <h3>Get more things with your Images.</h3>
+                    <img id="outImage" src="{% static 'images/graphic.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content" style="background-color:  #663399">
+                    <div class="form-items">
+                        <div class="website-logo-inside">
+                            <a href="">
+                                <div class="logo">
+                                    <p style="color: white; font size: 50px;"><strong>SUPER♾</strong></p>
+                                    <p style="color: white; font size: 20px; margin-top: -20px;">Image Processing</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="page-links">
+                            <a href=" " class="active">Play with Images</a>
+                        </div>
+
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <select class="form-control" name="service">
+                                <option>Choose your option</option>
+                                <option>Object Detection</option>
+                                <option>Face Analysis</option>
+                                <option>Celebrity Detection</option>
+                            </select><br>
+                            <input class="form-control"  id="inputImage" type="file" onchange="ChangeImage(event)" name="image" required>
+                            <div class="form-button">
+                                <button id="submit"  type="submit"  class="ibtn">Play</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    function ChangeImage(e){
+       var img = document.getElementById("outImage");
+       img.src = URL.createObjectURL(e.target.files[0]);
+    }
+</script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
